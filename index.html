@@ -1,288 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sonadev-home</title>
-  <link rel="stylesheet" href="index.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login or Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 97vh;
+            background-color: black;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #4ade80;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #4ade80;
+        }
+        input[type="email"],
+        input[type="password"],
+        input[type="text"],
+        input[type="file"] { 
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; 
+        }
+         input[type="file"] {
+             padding: 8px; 
+         }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4ade80;
+            color: black;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        .toggle-link {
+            margin-top: 15px;
+            color: #4ade80;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+         #signupForm {
+            display: none; 
+        }
+         #image-preview { 
+             margin-top: 10px;
+             max-width: 100px;
+             max-height: 100px;
+             display: none; 
+             border: 1px solid #ccc;
+             padding: 5px;
+             box-sizing: border-box;
+         }
+    </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo" ><img src="./download__9_-removebg-preview.png" alt="" style="height: 50px; padding: -1px;"></div>
-    <div class="nav-center">
-      <a href="#" class="home-button">
-        <i class="fa-solid fa-house"></i></a>
-      <div class="search-container">
-        <input type="text" placeholder="What do you want to play?" />
-        <button class="search-btn">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
-      </div>
-    </div>
-    <div class="nav-right">
-      <span class="user-id">user123</span>
-      <button id="logout-button">Logout</button>
-      <button class="hamburger" id="hamburger-btn">☰</button>
-    </div>
-  </nav>
-
-  <section class="hero">
-    <div class="hero-left">
-      <div class="carousel-container">
-        <div class="carousel-title">Trending Songs</div>
-        <div class="carousel">
-          <div class="carousel-track">
-            <div class="carousel-card">
-              <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1" class="image-container"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'audio-files/BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
-              <div class="card-footer">
-                <p>Cutesy <br>
-                BNXN</p>
-              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'audio-files/BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
-              </div>
-            </div>
-            <div class="carousel-card">
-              <img src="https://i.scdn.co/image/ab67616d00001e023379cc0e95475b9282756bc8" alt="Project 2" onclick="loadContent('https://i.scdn.co/image/ab67616d00001e023379cc0e95475b9282756bc8', 'audio-files/anytime.mp3')">
-              <div class="card-footer">
-                <p>Anytime .Ayo Maff
-                </p>
-              <button class="play-btn" onclick="loadContent('https://i.scdn.co/image/ab67616d00001e023379cc0e95475b9282756bc8', 'audio-files/anytime.mp3')">&#9658;</button>
-              </div>
-            </div>
-            <div class="carousel-card">
-              <img src="https://i.scdn.co/image/ab67616d00001e02bd7c458fdf9f79732238d43a" alt="Project 1" onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02bd7c458fdf9f79732238d43a', 'audio-files/FOLA_Ft_Kizz_Daniel_-_lost_Tunesloaded.com.ng.mp3')">
-              <div class="card-footer">
-                <p>Lost <br>
-                FOLA</p>
-              <button class="play-btn">&#9658;</button>
-              </div>
-            </div>
-            <div class="carousel-card">
-              <img src="https://i.scdn.co/image/ab67616d00001e028a30c1ac4f470820fa607b10" alt="Project 2"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e028a30c1ac4f470820fa607b10', 'audio-files/Bhadboi_OML_-_Alade_Ade_Tunesloaded.com.ng.mp3')">
-              <div class="card-footer">
-                <p>Alade Ade <br>
-                  BHADBOI OML
-                </p>
-              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e028a30c1ac4f470820fa607b10', 'audio-files/Bhadboi_OML_-_Alade_Ade_Tunesloaded.com.ng.mp3')">&#9658;</button>
-              </div>
-            </div>
-            <div class="carousel-card">
-              <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1" class="image-container"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
-              <div class="card-footer">
-                <p>Cutesy <br>
-                BNXN</p>
-              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
-              </div>
-            </div>
-            <div class="carousel-card">
-              <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1" class="image-container"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
-              <div class="card-footer">
-                <p>Cutesy <br>
-                BNXN</p>
-              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
-              </div>
-            </div>
-            <div class="carousel-card">
-              <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1" class="image-container"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
-              <div class="card-footer">
-                <p>Cutesy <br>
-                BNXN</p>
-              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
-              </div>
-            </div>
-            <div class="carousel-card">
-              <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1" class="image-container"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
-              <div class="card-footer">
-                <p>Cutesy <br>
-                BNXN</p>
-              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-        <button class="carousel-btn left">&#10094;</button>
-        <button class="carousel-btn right">&#10095;</button>
-      </div>
-
-        <!-- Second Carousel with Rounded Images -->
-        <div class="carousel-container rounded-carousel">
-          <div class="carousel-title">Popular Artists</div>
-          <div class="carousel">
-            <div class="carousel-track carouse1l-track">
-              <div class="carousel-card">
-                <img class="rounded" src="https://i.scdn.co/image/ab67616100005174dc3fcc7b3eb99a22b3180eea" alt="Project 1">
-                <p style="font-weight: bold;">REMA</p>
-              </div>
-              <div class="carousel-card">
-                <img class="rounded" src="https://i.scdn.co/image/ab67616100005174cd47c329da04b3f18ddabe0e" alt="Project 1">
-                <p style="font-weight: bold;">SHALLIPOPI</p>
-              </div>
-              <div class="carousel-card">
-                <img class="rounded" src="https://i.scdn.co/image/ab67616100005174e6ef803356b45ee5a9fa7a8a" alt="Project 1">
-                <p style="font-weight: bold;">WIZKID</p>
-              </div>
-              <div class="carousel-card">
-                <img class="rounded" src="https://i.scdn.co/image/ab676161000051742d405f4858ce3cd52d409c98" alt="Project 1">
-                <p style="font-weight: bold;">BURNA BOY</p>
-              </div>
-              
-              <div class="carousel-card">
-                <img class="rounded" src="https://i.scdn.co/image/ab67616100005174a3ae97af098bf3aeeb24d338" alt="Project 1">
-                <p style="font-weight: bold;">ASAKE</p>
-              </div>
-              
-            </div>
-          </div>
-         
+    <div class="container">
+        <div id="loginForm">
+            <h2>Login</h2>
+            <form id="loginEmailPassword">
+                <div class="form-group">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit">Login</button>
+                <p class="error-message" id="login-error-message"></p>
+            </form>
+            <p class="toggle-link" onclick="toggleForms()">Need an account? Sign Up</p>
         </div>
 
-        <div class="carousel-container album">
-          <div class="carousel-title">Popular Albums And Singles</div>
-          <div class="carousel">
-            <div class="carousel-track carouse1l-track">
-              <div class="carousel-card space">
-                <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e025e9b08109120e18c41a7b3e2" alt="Project 1">
-                <div class="card-footer">
-                  <p>Morayo <br>
-                  WIZKID</p>
-                <button class="play-btn">&#9658;</button>
+        <div id="signupForm">
+            <h2>Sign Up</h2>
+            <form id="signupEmailPassword">
+                 <div class="form-group">
+                    <label for="signup-username">Username:</label>
+                    <input type="text" id="signup-username" required>
                 </div>
-              </div>
-              <div class="carousel-card">
-                <img src="https://i.scdn.co/image/ab67616d00001e02031b368082f16c71881b2b20" alt="Project 2">
-                <div class="card-footer">
-                  <p>Gen Z <br>
-                    ZINOLEESKY
-                  </p>
-                <button class="play-btn">&#9658;</button>
+                <div class="form-group">
+                    <label for="signup-email">Email:</label>
+                    <input type="email" id="signup-email" required>
                 </div>
-              </div>
-              <div class="carousel-card">
-                <img src="https://i.scdn.co/image/ab67616d00001e027c45c1c29c18a5e0b46fc117" alt="Project 1">
-                <div class="card-footer">
-                  <p>Lungu Boy <br>
-                  ASAKE</p>
-                <button class="play-btn">&#9658;</button>
+                <div class="form-group">
+                    <label for="signup-password">Password:</label>
+                    <input type="password" id="signup-password" required>
                 </div>
-              </div>
-              <div class="carousel-card">
-                <img src="https://i.scdn.co/image/ab67616d00001e02206085a51b33b6ce28caef77" alt="Project 2">
-                <div class="card-footer">
-                  <p>5ive <br>
-                    DAVIDO
-                  </p>
-                <button class="play-btn">&#9658;</button>
+                 <div class="form-group">
+                    <label for="signup-image">Profile Image:</label>
+                    <input type="file" id="signup-image" accept="image/*">
+                     <img id="image-preview" src="#" alt="Image Preview">
                 </div>
-              </div>
-              <div class="carousel-card">
-                <img src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
-                <div class="card-footer">
-                  <p>Cutesy <br>
-                  BNXN</p>
-                <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
-                </div>
-              </div>
-       
-            </div>
-          </div>
-          
-        </div>
-  
-
-        <section class="footer">
-          <div class="footer-content">
-            <!-- Title Lists -->
-            <div class="footer-lists">
-              <div class="footer-list">
-                <h3>Company</h3>
-                <ul>
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Careers</a></li>
-                  <li><a href="#">Press</a></li>
-                  <li><a href="#">Blog</a></li>
-                </ul>
-              </div>
-              <div class="footer-list">
-                <h3>Support</h3>
-                <ul>
-                  <li><a href="#">Help Center</a></li>
-                  <li><a href="#">Contact</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Terms of Service</a></li>
-                </ul>
-              </div>
-              <div class="footer-list">
-                <h3>Services</h3>
-                <ul>
-                  <li><a href="#">Web Development</a></li>
-                  <li><a href="#">App Development</a></li>
-                  <li><a href="#">SEO Optimization</a></li>
-                  <li><a href="#">Digital Marketing</a></li>
-                </ul>
-              </div>
-              <div class="footer-list">
-                <h3>Resources</h3>
-                <ul>
-                  <li><a href="#">Documentation</a></li>
-                  <li><a href="#">API Reference</a></li>
-                  <li><a href="#">Community</a></li>
-                  <li><a href="#">Tutorials</a></li>
-                </ul>
-              </div>
-            </div>
-        
-            <!-- Social Media Icons -->
-            <div class="footer-icons">
-              <a href="#" class="icon-facebook"><i class="fa-brands fa-facebook"></i></a>
-              <a href="#" class="icon-twitter"><i class="fa-brands fa-twitter"></i></a>
-              <a href="#" class="icon-instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
-        </section>
-        
-      </div>
-    
-
-    
-    <div class="hero-right">
-      
-        <div class="navbar2">
-          <span class="navbar2-title">Your Library</span>
-          <button class="add-btn">+</button>
-        </div>
-        
-        <div class="card">
-          <h3>Create Playlist</h3>
-          <p>It's easy, we'll help.</p>
-          <button class="card-btn">Create Playlist</button>
-        </div>
-    
-        <!-- Second Card -->
-        <div class="card">
-          <h3>Follow Podcasts</h3>
-          <p>We'll keep you updated on new episodes.</p>
-          <button class="card-btn">Browse Podcasts</button>
-        </div>
-        <div class="small-footer">
-          <div class="footer-item">Legal</div>
-          <div class="footer-item">Cookies</div>
-          <div class="footer-item">About Ads</div>
-          <div class="footer-item">Privacy Policy</div>
-          <div class="footer-item">Accessibility</div>
-          <div class="footer-item">Safety & Privacy Center</div>
+                <button type="submit">Sign Up</button>
+                 <p class="error-message" id="signup-error-message"></p>
+            </form>
+            <p class="toggle-link" onclick="toggleForms()">Already have an account? Login</p>
         </div>
     </div>
-  </section>
 
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
 
- <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
- <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
- <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
-  
+     <!-- Cloudinary Upload Widget (Optional, if you prefer the widget) -->
+     <!-- <script src="https://upload-widget.cloudinary.com/global/2.0/global.js" type="text/javascript"></script> -->
 
-  <script>
-  const firebaseConfig = {
+    <script>
+        // Your Firebase configuration
+        const firebaseConfig = {
             apiKey: "AIzaSyBEkbpXaQGAGEdnbdOkfseKkw0DnXBFyWc",
             authDomain: "sonadev-35c29.firebaseapp.com",
             projectId: "sonadev-35c29",
@@ -297,61 +160,170 @@
         const auth = firebase.auth();
         const db = firebase.firestore();
 
-        const profileImageElement = document.getElementById('profile-image');
-        const usernameSpan = document.getElementById('username');
-        const emailSpan = document.getElementById('email');
-        const logoutButton = document.getElementById('logout-button');
+        
+        const CLOUDINARY_CLOUD_NAME = 'dv13c6rdv'; // Cloudinary Cloud Name
+        const CLOUDINARY_UPLOAD_PRESET = 'unsigned_signup'; // Cloudinary Upload Preset (unsigned)
 
-        // Function to get UID from URL query parameter
-        function getUidFromUrl() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('uid');
+        // Get form elements
+        const loginForm = document.getElementById('loginEmailPassword');
+        const signupForm = document.getElementById('signupEmailPassword');
+        const loginErrorMessage = document.getElementById('login-error-message');
+        const signupErrorMessage = document.getElementById('signup-error-message');
+        const usernameInput = document.getElementById('signup-username');
+        const imageInput = document.getElementById('signup-image');
+        const imagePreview = document.getElementById('image-preview');
+
+
+        // Function to toggle between login and signup forms
+        function toggleForms() {
+            const loginDiv = document.getElementById('loginForm');
+            const signupDiv = document.getElementById('signupForm');
+            if (loginDiv.style.display === 'none') {
+                loginDiv.style.display = 'block';
+                signupDiv.style.display = 'none';
+                signupErrorMessage.textContent = ''; 
+            } else {
+                loginDiv.style.display = 'none';
+                signupDiv.style.display = 'block';
+                 loginErrorMessage.textContent = ''; 
+            }
         }
 
-    document.getElementById('hamburger-btn').addEventListener('click', () => {
-  // Placeholder for dropdown functionality
-  alert('Hamburger menu clicked!');
-});
-
-const carousel = document.querySelector('.carousel');
-const btnLeft = document.querySelector('.carousel-btn.left');
-const btnRight = document.querySelector('.carousel-btn.right');
-
-const scrollStep = 320; 
-
-btnRight.addEventListener('click', () => {
-  carousel.scrollBy({ left: scrollStep, behavior: 'smooth' });
-});
-
-btnLeft.addEventListener('click', () => {
-  carousel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
-});
-
- // Logout button functionality
- logoutButton.addEventListener('click', () => {
-            auth.signOut().then(() => {
-                // Sign-out successful.
-                console.log("User signed out.");
-                // Redirect to the login/signup page
-                window.location.href = 'form2.html';
-            }).catch((error) => {
-                // An error happened.
-                console.error("Logout error:", error);
-                // Optionally display an error message to the user
-            });
+        // Image preview
+        imageInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    imagePreview.style.display = 'block';
+                }
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.src = '#';
+                imagePreview.style.display = 'none';
+            }
         });
 
+        // Function to upload image to Cloudinary
+        async function uploadImage(file) {
+             if (!file) return null; // Return null if no file is selected
 
-        function loadContent(imageUrl, audioUrl) {
-            // Store the selected content in localStorage
-            localStorage.setItem('selectedImage', imageUrl);
-            localStorage.setItem('selectedAudio', audioUrl);
-            
-            // Redirect to the player page
-            window.location.href = 'test3.html';
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+
+            try {
+                const response = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`, {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                console.log("Cloudinary upload response:", data);
+                 if (response.ok) {
+                     return data.secure_url; // Return the secure URL of the uploaded image on success
+                 } else {
+                     console.error("Cloudinary upload error response:", data);
+                      // Handle Cloudinary specific errors if needed
+                     throw new Error(data.error ? data.error.message : 'Image upload failed.');
+                 }
+            } catch (error) {
+                console.error("Error uploading image to Cloudinary:", error);
+                signupErrorMessage.textContent = error.message || "Image upload failed. Please try again.";
+                throw error; // Re-throw the error to stop the signup process
+            }
         }
 
-    
-  </script>
+
+        // Email/Password Sign Up
+        signupForm.addEventListener('submit', async (e) => { // Added async here
+            e.preventDefault();
+            const username = usernameInput.value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const imageFile = imageInput.files[0]; // Get the selected image file
+             signupErrorMessage.textContent = ''; // Clear previous error
+
+             // Basic validation
+             if (!username || !email || !password) {
+                 signupErrorMessage.textContent = "Please fill in all required fields.";
+                 return;
+             }
+             if (password.length < 6) { // Firebase requires at least 6 characters for password
+                 signupErrorMessage.textContent = "Password should be at least 6 characters.";
+                 return;
+             }
+
+
+            try {
+                // 1. Upload the image to Cloudinary first (only if a file is selected)
+                const imageUrl = await uploadImage(imageFile);
+                console.log("Uploaded image URL:", imageUrl);
+
+                // 2. Create the user in Firebase Auth
+                const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+                const user = userCredential.user;
+                console.log("User signed up:", user);
+
+                // 3. Save user data to Firestore, including the image URL
+                await db.collection('users').doc(user.uid).set({
+                    username: username,
+                    email: user.email,
+                    profileImageUrl: imageUrl || null, // Save the image URL (or null if no image)
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    
+                });
+
+                console.log("User data saved to Firestore.");
+
+                window.location.href = `home.html?uid=${auth.currentUser.uid}`; 
+
+            } catch (error) {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.error("Sign up error:", errorCode, errorMessage);
+                signupErrorMessage.textContent = errorMessage || "An error occurred during signup.";
+            }
+        });
+
+        // Email/Password Login
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            loginErrorMessage.textContent = ''; // Clear previous error
+
+             // Basic validation
+             if (!email || !password) {
+                 loginErrorMessage.textContent = "Please fill in all required fields.";
+                 return;
+             }
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+                    console.log("User logged in:", user);
+
+                    window.location.href = `home.html?uid=${user.uid}`;
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                     console.error("Login error:", errorCode, errorMessage);
+                     loginErrorMessage.textContent = 'Incorrect email or password. Please try again.';
+                });
+        });
+
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                 console.log("User already logged in:", user.uid);
+                 window.location.href = `home.html?uid=${user.uid}`;
+            } else {
+                 console.log("No user logged in. Staying on form page.");
+            }
+        });
+
+    </script>
 </body>
 </html>

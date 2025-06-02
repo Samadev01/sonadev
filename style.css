@@ -1,0 +1,16 @@
+#profile-image {
+    width: 100px; /* Example size */
+    height: 100px; /* Example size */
+    border-radius: 50%; /* Make it round */
+    object-fit: cover; /* Ensure image covers the area */
+    display: block; /* Position as needed */
+    margin: 20px auto; /* Center the image with some margin */
+    border: 2px solid #ccc; /* Optional: add a border */
+}
+
+#playlist-display {
+    font-size: 1.1em;
+    margin-top: 10px;
+    color: #555; /* Example color */
+    text-align: center; /* Center the text */
+}

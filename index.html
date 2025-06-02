@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>sonadev-home</title>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo" ><img src="./download__9_-removebg-preview.png" alt="" style="height: 50px; padding: -1px;"></div>
+    <div class="nav-center">
+      <a href="#" class="home-button">
+        <i class="fa-solid fa-house"></i></a>
+      <div class="search-container">
+        <input type="text" placeholder="What do you want to play?" />
+        <button class="search-btn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </div>
+    <div class="nav-right">
+      <span class="user-id">user123</span>
+      <button id="logout-button">Logout</button>
+      <button class="hamburger" id="hamburger-btn">☰</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="carousel-container">
+        <div class="carousel-title">Trending Songs</div>
+        <div class="carousel">
+          <div class="carousel-track">
+            <div class="carousel-card">
+              <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1" class="image-container"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'audio-files/BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
+              <div class="card-footer">
+                <p>Cutesy <br>
+                BNXN</p>
+              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'audio-files/BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
+              </div>
+            </div>
+            <div class="carousel-card">
+              <img src="https://i.scdn.co/image/ab67616d00001e023379cc0e95475b9282756bc8" alt="Project 2" onclick="loadContent('https://i.scdn.co/image/ab67616d00001e023379cc0e95475b9282756bc8', 'audio-files/anytime.mp3')">
+              <div class="card-footer">
+                <p>Anytime .Ayo Maff
+                </p>
+              <button class="play-btn" onclick="loadContent('https://i.scdn.co/image/ab67616d00001e023379cc0e95475b9282756bc8', 'audio-files/anytime.mp3')">&#9658;</button>
+              </div>
+            </div>
+            <div class="carousel-card">
+              <img src="https://i.scdn.co/image/ab67616d00001e02bd7c458fdf9f79732238d43a" alt="Project 1" onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02bd7c458fdf9f79732238d43a', 'audio-files/FOLA_Ft_Kizz_Daniel_-_lost_Tunesloaded.com.ng.mp3')">
+              <div class="card-footer">
+                <p>Lost <br>
+                FOLA</p>
+              <button class="play-btn">&#9658;</button>
+              </div>
+            </div>
+            <div class="carousel-card">
+              <img src="https://i.scdn.co/image/ab67616d00001e028a30c1ac4f470820fa607b10" alt="Project 2"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e028a30c1ac4f470820fa607b10', 'audio-files/Bhadboi_OML_-_Alade_Ade_Tunesloaded.com.ng.mp3')">
+              <div class="card-footer">
+                <p>Alade Ade <br>
+                  BHADBOI OML
+                </p>
+              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e028a30c1ac4f470820fa607b10', 'audio-files/Bhadboi_OML_-_Alade_Ade_Tunesloaded.com.ng.mp3')">&#9658;</button>
+              </div>
+            </div>
+            <div class="carousel-card">
+              <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1" class="image-container"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
+              <div class="card-footer">
+                <p>Cutesy <br>
+                BNXN</p>
+              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
+              </div>
+            </div>
+            <div class="carousel-card">
+              <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1" class="image-container"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
+              <div class="card-footer">
+                <p>Cutesy <br>
+                BNXN</p>
+              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
+              </div>
+            </div>
+            <div class="carousel-card">
+              <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1" class="image-container"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
+              <div class="card-footer">
+                <p>Cutesy <br>
+                BNXN</p>
+              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
+              </div>
+            </div>
+            <div class="carousel-card">
+              <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1" class="image-container"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
+              <div class="card-footer">
+                <p>Cutesy <br>
+                BNXN</p>
+              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <button class="carousel-btn left">&#10094;</button>
+        <button class="carousel-btn right">&#10095;</button>
+      </div>
+
+        <!-- Second Carousel with Rounded Images -->
+        <div class="carousel-container rounded-carousel">
+          <div class="carousel-title">Popular Artists</div>
+          <div class="carousel">
+            <div class="carousel-track carouse1l-track">
+              <div class="carousel-card">
+                <img class="rounded" src="https://i.scdn.co/image/ab67616100005174dc3fcc7b3eb99a22b3180eea" alt="Project 1">
+                <p style="font-weight: bold;">REMA</p>
+              </div>
+              <div class="carousel-card">
+                <img class="rounded" src="https://i.scdn.co/image/ab67616100005174cd47c329da04b3f18ddabe0e" alt="Project 1">
+                <p style="font-weight: bold;">SHALLIPOPI</p>
+              </div>
+              <div class="carousel-card">
+                <img class="rounded" src="https://i.scdn.co/image/ab67616100005174e6ef803356b45ee5a9fa7a8a" alt="Project 1">
+                <p style="font-weight: bold;">WIZKID</p>
+              </div>
+              <div class="carousel-card">
+                <img class="rounded" src="https://i.scdn.co/image/ab676161000051742d405f4858ce3cd52d409c98" alt="Project 1">
+                <p style="font-weight: bold;">BURNA BOY</p>
+              </div>
+              
+              <div class="carousel-card">
+                <img class="rounded" src="https://i.scdn.co/image/ab67616100005174a3ae97af098bf3aeeb24d338" alt="Project 1">
+                <p style="font-weight: bold;">ASAKE</p>
+              </div>
+              
+            </div>
+          </div>
+         
+        </div>
+
+        <div class="carousel-container album">
+          <div class="carousel-title">Popular Albums And Singles</div>
+          <div class="carousel">
+            <div class="carousel-track carouse1l-track">
+              <div class="carousel-card space">
+                <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e025e9b08109120e18c41a7b3e2" alt="Project 1">
+                <div class="card-footer">
+                  <p>Morayo <br>
+                  WIZKID</p>
+                <button class="play-btn">&#9658;</button>
+                </div>
+              </div>
+              <div class="carousel-card">
+                <img src="https://i.scdn.co/image/ab67616d00001e02031b368082f16c71881b2b20" alt="Project 2">
+                <div class="card-footer">
+                  <p>Gen Z <br>
+                    ZINOLEESKY
+                  </p>
+                <button class="play-btn">&#9658;</button>
+                </div>
+              </div>
+              <div class="carousel-card">
+                <img src="https://i.scdn.co/image/ab67616d00001e027c45c1c29c18a5e0b46fc117" alt="Project 1">
+                <div class="card-footer">
+                  <p>Lungu Boy <br>
+                  ASAKE</p>
+                <button class="play-btn">&#9658;</button>
+                </div>
+              </div>
+              <div class="carousel-card">
+                <img src="https://i.scdn.co/image/ab67616d00001e02206085a51b33b6ce28caef77" alt="Project 2">
+                <div class="card-footer">
+                  <p>5ive <br>
+                    DAVIDO
+                  </p>
+                <button class="play-btn">&#9658;</button>
+                </div>
+              </div>
+              <div class="carousel-card">
+                <img src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
+                <div class="card-footer">
+                  <p>Cutesy <br>
+                  BNXN</p>
+                <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
+                </div>
+              </div>
+       
+            </div>
+          </div>
+          
+        </div>
+  
+
+        <section class="footer">
+          <div class="footer-content">
+            <!-- Title Lists -->
+            <div class="footer-lists">
+              <div class="footer-list">
+                <h3>Company</h3>
+                <ul>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Careers</a></li>
+                  <li><a href="#">Press</a></li>
+                  <li><a href="#">Blog</a></li>
+                </ul>
+              </div>
+              <div class="footer-list">
+                <h3>Support</h3>
+                <ul>
+                  <li><a href="#">Help Center</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
+                  <li><a href="#">Terms of Service</a></li>
+                </ul>
+              </div>
+              <div class="footer-list">
+                <h3>Services</h3>
+                <ul>
+                  <li><a href="#">Web Development</a></li>
+                  <li><a href="#">App Development</a></li>
+                  <li><a href="#">SEO Optimization</a></li>
+                  <li><a href="#">Digital Marketing</a></li>
+                </ul>
+              </div>
+              <div class="footer-list">
+                <h3>Resources</h3>
+                <ul>
+                  <li><a href="#">Documentation</a></li>
+                  <li><a href="#">API Reference</a></li>
+                  <li><a href="#">Community</a></li>
+                  <li><a href="#">Tutorials</a></li>
+                </ul>
+              </div>
+            </div>
+        
+            <!-- Social Media Icons -->
+            <div class="footer-icons">
+              <a href="#" class="icon-facebook"><i class="fa-brands fa-facebook"></i></a>
+              <a href="#" class="icon-twitter"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#" class="icon-instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+        </section>
+        
+      </div>
+    
+
+    
+    <div class="hero-right">
+      
+        <div class="navbar2">
+          <span class="navbar2-title">Your Library</span>
+          <button class="add-btn">+</button>
+        </div>
+        
+        <div class="card">
+          <h3>Create Playlist</h3>
+          <p>It's easy, we'll help.</p>
+          <button class="card-btn">Create Playlist</button>
+        </div>
+    
+        <!-- Second Card -->
+        <div class="card">
+          <h3>Follow Podcasts</h3>
+          <p>We'll keep you updated on new episodes.</p>
+          <button class="card-btn">Browse Podcasts</button>
+        </div>
+        <div class="small-footer">
+          <div class="footer-item">Legal</div>
+          <div class="footer-item">Cookies</div>
+          <div class="footer-item">About Ads</div>
+          <div class="footer-item">Privacy Policy</div>
+          <div class="footer-item">Accessibility</div>
+          <div class="footer-item">Safety & Privacy Center</div>
+        </div>
+    </div>
+  </section>
+
+
+ <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+ <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
+  
+
+  <script>
+  const firebaseConfig = {
+            apiKey: "AIzaSyBEkbpXaQGAGEdnbdOkfseKkw0DnXBFyWc",
+            authDomain: "sonadev-35c29.firebaseapp.com",
+            projectId: "sonadev-35c29",
+            storageBucket: "sonadev-35c29.appspot.com",
+            messagingSenderId: "896577604099",
+            appId: "1:896577604099:web:09179fc434949e8edddc36",
+            measurementId: "G-1RNR95MR71"
+        };
+
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        const profileImageElement = document.getElementById('profile-image');
+        const usernameSpan = document.getElementById('username');
+        const emailSpan = document.getElementById('email');
+        const logoutButton = document.getElementById('logout-button');
+
+        // Function to get UID from URL query parameter
+        function getUidFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('uid');
+        }
+
+    document.getElementById('hamburger-btn').addEventListener('click', () => {
+  // Placeholder for dropdown functionality
+  alert('Hamburger menu clicked!');
+});
+
+const carousel = document.querySelector('.carousel');
+const btnLeft = document.querySelector('.carousel-btn.left');
+const btnRight = document.querySelector('.carousel-btn.right');
+
+const scrollStep = 320; 
+
+btnRight.addEventListener('click', () => {
+  carousel.scrollBy({ left: scrollStep, behavior: 'smooth' });
+});
+
+btnLeft.addEventListener('click', () => {
+  carousel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+});
+
+ // Logout button functionality
+ logoutButton.addEventListener('click', () => {
+            auth.signOut().then(() => {
+                // Sign-out successful.
+                console.log("User signed out.");
+                // Redirect to the login/signup page
+                window.location.href = 'form2.html';
+            }).catch((error) => {
+                // An error happened.
+                console.error("Logout error:", error);
+                // Optionally display an error message to the user
+            });
+        });
+
+
+        function loadContent(imageUrl, audioUrl) {
+            // Store the selected content in localStorage
+            localStorage.setItem('selectedImage', imageUrl);
+            localStorage.setItem('selectedAudio', audioUrl);
+            
+            // Redirect to the player page
+            window.location.href = 'test3.html';
+        }
+
+    
+  </script>
+</body>
+</html>

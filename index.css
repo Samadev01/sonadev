@@ -1,0 +1,578 @@
+/* Reset and base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Navbar container */
+  .navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: black;
+    color: #4ade80;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    z-index: 1000;
+  }
+  
+  
+  /* Center section */
+  .nav-center {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .home-button {
+    color: red;
+    text-decoration: none;
+    font-size: 2rem;
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    background-color: #4ade80;
+    border-radius: 50px 5px;
+    overflow: hidden;
+    gap: -1.3em;
+  }
+  
+  .search-container input {
+    border: none;
+    padding:15px 50px;
+    outline: none;
+    background-color: #4ade80;
+   
+  }
+
+  
+::placeholder { /* Edge 12 -18 */
+  color: black;
+  font-weight: bold;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+  
+  .search-btn {
+    background-color: #4ade80;
+    border: none;
+    padding: 0px 25px;
+    cursor: pointer;
+    font-size: 1.2em;
+  }
+  
+  /* Right section */
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .user-id {
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  
+  .hamburger {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+  }
+  #logout-button {
+    margin-top: 5px;
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+#logout-button:hover {
+    background-color: rgba(255, 0, 0, 0.647);
+}
+  
+.hero {
+  display: flex;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: black;
+}
+
+.hero-left,
+.hero-right {
+  height: calc(100vh - 100px); 
+  overflow-y: auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.hero-left {
+  flex: 0 0 80%;
+  background: url('your-image.jpg') center/cover no-repeat;
+  color: #ffffff;
+  overflow-y: auto; /* Enables vertical scrolling */
+  -ms-overflow-style: none; /* Hides scrollbar in Internet Explorer and Edge */
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+}
+
+.hero-right {
+  flex: 0 0 20%;
+  background-color: black;
+  color: #333333;
+
+}
+
+
+.hero-left::-webkit-scrollbar {
+  display: none !important; /* Hides scrollbar in Chrome, Safari, and Opera */
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  overflow: hidden;
+  padding-top: 50px;
+}
+
+.carousel-title {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #4ade80;
+  z-index: 15;
+}
+
+.carousel {
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-track img {
+  width: 100%;
+  max-width: 300px;
+  margin-right: 10px;
+  border-radius: 8px;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  display: none;
+  z-index: 10;
+}
+
+.carousel-container:hover .carousel-btn {
+  display: block;
+}
+
+.carousel-btn.left {
+  left: 10px;
+}
+
+.carousel-btn.right {
+  right: 10px;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+}
+
+.carousel-card {
+  flex: 0 0 auto;
+  width: 200px;
+  margin-right: 10px;
+  background-color: rgb(28, 26, 26);
+  border-radius: 8px;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-card img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+  border-radius: 8px 8px 0 0;
+}
+
+.carousel-card p {
+  margin: 10px 0;
+  font-size: 1rem;
+  color: #4ade80;
+}
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.play-btn {
+  background-color: red;
+  color: black;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.play-btn:hover {
+  background-color: #e65c00;
+}
+
+.rounded-carousel, .album{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+}
+.rounded-carousel .carousel-card img {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 50%; /* Makes the image circular */
+  margin-bottom: 10px;
+}
+
+
+
+/* Navbar styling */
+.navbar2 {
+  position: static;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4em;
+  background-color: #4ade80;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  
+}
+
+/* Title styling */
+.navbar2-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+}
+
+/* Button styling */
+.add-btn {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.3s;
+}
+
+.add-btn:hover {
+  color: white;
+}
+
+
+/* Footer Container */
+.footer {
+  background-color: black;
+  color: red;
+  padding: 40px 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Flexbox Layout for Footer Content */
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+/* Title Lists Styling */
+.footer-lists {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+}
+
+.footer-list {
+  flex: 1;
+}
+
+.footer-list h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.footer-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-list li {
+  margin-bottom: 8px;
+}
+
+.footer-list a {
+  color: #4ade80  ;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer-list a:hover {
+  color: #fff;
+}
+
+/* Social Media Icons Styling */
+.footer-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 0 0 200px;
+}
+
+.footer-icons a {
+  color: #bbb;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.footer-icons a:hover {
+  color: #fff;
+}
+
+
+/* Card container */
+.hero-left {
+  width: 20%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Individual card styling */
+.card {
+  background-color: rgb(28, 26, 26);
+
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Card hover effect */
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* Card title */
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #4ade80;
+}
+
+/* Card text */
+.card p {
+  font-size: 1rem;
+  color: #4ade80;
+  margin-bottom: 20px;
+}
+
+/* Full-width button */
+.card-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+/* Button hover effect */
+.card-btn:hover {
+  background-color: black;
+}
+
+/* Footer container */
+.small-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px;
+
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+}
+
+/* Footer items */
+.footer-item {
+  flex: 0 0 32%;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #4ade80;
+}
+
+
+
+
+@media (max-width: 768px) {
+
+  .nav-center {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero-left,
+  .hero-right {
+    flex: 0 0 100%;
+    height: auto;
+    overflow-y: visible;
+  }
+  .carousel-track img {
+    max-width: 70px;
+  }
+  .carousel-card img {
+    width: 100%;
+    height: auto;
+    max-height: 800px; /* Adjust this value as needed */
+    object-fit: cover;
+  }
+  .carousel-card:hover {
+    transform: translateY(-8px) scale(1.03);
+  }
+  .footer-lists {
+    flex-direction: column;
+    align-items: flex-start;
+    
+  }
+  
+  .navbar2 {
+    justify-content: center;
+    padding: 15px;
+  }
+
+  .navbar2-title {
+    font-size: 1rem;
+  }
+
+  .add-btn {
+    font-size: 1.2rem;
+  }
+  .hero-left {
+    width: 100%;
+  }
+
+  .card {
+    margin-bottom: 15px;
+  }
+  .footer-item {
+    flex: 0 0 48%;
+  }
+  .carouse1l-track {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .carousel1-card {
+    width: 90%;
+    margin-bottom: 1rem;
+   
+  }
+  .carousel-card img {
+    width: 50px;
+  }
+  
+  
+}
+
+
+@media (max-width: 480px) {
+  .carousel-track img {
+    max-width: 50px;
+  }
+  .footer-icons {
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .navbar-title {
+    font-size: 0.9rem;
+  }
+
+  .add-btn {
+    font-size: 1rem;
+  }
+
+  .card h3 {
+    font-size: 1rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+  }
+
+  .card-btn {
+    font-size: 0.9rem;
+  }
+  .footer-item {
+    flex: 0 0 100%;
+  }
+}
+  

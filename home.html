@@ -1,357 +1,469 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>sonadev-home</title>
-  <link rel="stylesheet" href="home.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body>
-  <nav class="navbar">
-    <div class="logo" ><img src="./download__9_-removebg-preview.png" alt="" style="height: 50px; padding: -1px;"></div>
-    <div class="nav-center">
-      <a href="#" class="home-button">
-        <i class="fa-solid fa-house"></i></a>
-      <div class="search-container">
-        <input type="text" placeholder="What do you want to play?" />
-        <button class="search-btn">
-          <i class="fa-solid fa-magnifying-glass"></i>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sonadev-home</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #000;
+        color: white;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background: #111;
+        flex-wrap: wrap;
+      }
+
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo {
+        cursor: pointer;
+      }
+
+      .logo img {
+        height: 35px;
+      }
+
+      .home-btn {
+        background: #4ade80;
+        border: none;
+        padding: 6px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .search-container {
+        display: flex;
+        gap: 8px;
+      }
+
+      .search-container input {
+        padding: 8px;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .search-container button {
+        background: #4ade80;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .library-btn {
+        background: #4ade80;
+        border: none;
+        padding: 6px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      #logout-button {
+        background: red;
+        border: none;
+        padding: 8px 12px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .hero {
+        display: flex;
+      }
+
+      .hero-left {
+        flex: 3;
+        padding: 20px;
+      }
+
+      .hero-right {
+        flex: 1;
+        background: #111;
+        padding: 20px;
+      }
+
+      .section-title {
+        color: #4ade80;
+        margin-top: 30px;
+      }
+
+      .grid-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 15px;
+        margin-top: 15px;
+      }
+
+      .music-card {
+        background: #1c1a1a;
+        padding: 10px;
+        border-radius: 10px;
+        transition: 0.3s;
+        position: relative;
+        cursor: pointer;
+      }
+
+      .music-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .music-card img {
+        width: 100%;
+        border-radius: 8px;
+      }
+
+      .music-card p {
+        color: #4ade80;
+        margin-top: 8px;
+        font-size: 13px;
+      }
+
+      .save-btn {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: #4ade80;
+        border: none;
+        padding: 4px 6px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+
+      .spinner {
+        display: none;
+        text-align: center;
+        margin: 30px 0;
+      }
+
+      .spinner div {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #4ade80;
+        border-top: 5px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: auto;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #4ade80;
+        color: black;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-weight: bold;
+        opacity: 0;
+        transition:
+          opacity 0.3s ease,
+          bottom 0.3s ease;
+        z-index: 9999;
+      }
+
+      .toast.show {
+        opacity: 1;
+        bottom: 40px;
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          flex-direction: column;
+          align-items: stretch;
+          gap: 10px;
+        }
+
+        .nav-left {
+          justify-content: space-between;
+        }
+
+        .search-container {
+          width: 100%;
+        }
+
+        .search-container input {
+          flex: 1;
+        }
+
+        .hero {
+          flex-direction: column;
+        }
+
+        .hero-right {
+          margin-top: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="toast" class="toast">Added to Library</div>
+
+    <nav class="navbar">
+      <div class="nav-left">
+        <div class="logo" onclick="goHome()">
+          <img src="./download__9_-removebg-preview.png" />
+        </div>
+
+        <button class="home-btn" onclick="goHome()">
+          <i class="fa-solid fa-house"></i>
         </button>
       </div>
-    </div>
-    <div class="nav-right">
-      <span class="user-id">user123</span>
-      <button id="logout-button">Logout</button>
-      <button class="hamburger" id="hamburger-btn">☰</button>
-    </div>
-  </nav>
 
-  <section class="hero">
-    <div class="hero-left">
-      <div class="carousel-container">
-        <div class="carousel-title">Trending Songs</div>
-        <div class="carousel">
-          <div class="carousel-track">
-            <div class="carousel-card">
-              <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1" class="image-container"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'audio-files/BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
-              <div class="card-footer">
-                <p>Cutesy <br>
-                BNXN</p>
-              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'audio-files/BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
-              </div>
-            </div>
-            <div class="carousel-card">
-              <img src="https://i.scdn.co/image/ab67616d00001e023379cc0e95475b9282756bc8" alt="Project 2" onclick="loadContent('https://i.scdn.co/image/ab67616d00001e023379cc0e95475b9282756bc8', 'audio-files/anytime.mp3')">
-              <div class="card-footer">
-                <p>Anytime .Ayo Maff
-                </p>
-              <button class="play-btn" onclick="loadContent('https://i.scdn.co/image/ab67616d00001e023379cc0e95475b9282756bc8', 'audio-files/anytime.mp3')">&#9658;</button>
-              </div>
-            </div>
-            <div class="carousel-card">
-              <img src="https://i.scdn.co/image/ab67616d00001e02bd7c458fdf9f79732238d43a" alt="Project 1" onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02bd7c458fdf9f79732238d43a', 'audio-files/FOLA_Ft_Kizz_Daniel_-_lost_Tunesloaded.com.ng.mp3')">
-              <div class="card-footer">
-                <p>Lost <br>
-                FOLA</p>
-              <button class="play-btn">&#9658;</button>
-              </div>
-            </div>
-            <div class="carousel-card">
-              <img src="https://i.scdn.co/image/ab67616d00001e028a30c1ac4f470820fa607b10" alt="Project 2"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e028a30c1ac4f470820fa607b10', 'audio-files/Bhadboi_OML_-_Alade_Ade_Tunesloaded.com.ng.mp3')">
-              <div class="card-footer">
-                <p>Alade Ade <br>
-                  BHADBOI OML
-                </p>
-              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e028a30c1ac4f470820fa607b10', 'audio-files/Bhadboi_OML_-_Alade_Ade_Tunesloaded.com.ng.mp3')">&#9658;</button>
-              </div>
-            </div>
-            <div class="carousel-card">
-              <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1" class="image-container"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
-              <div class="card-footer">
-                <p>Cutesy <br>
-                BNXN</p>
-              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
-              </div>
-            </div>
-            <div class="carousel-card">
-              <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1" class="image-container"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
-              <div class="card-footer">
-                <p>Cutesy <br>
-                BNXN</p>
-              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
-              </div>
-            </div>
-            <div class="carousel-card">
-              <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1" class="image-container"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
-              <div class="card-footer">
-                <p>Cutesy <br>
-                BNXN</p>
-              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
-              </div>
-            </div>
-            <div class="carousel-card">
-              <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1" class="image-container"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
-              <div class="card-footer">
-                <p>Cutesy <br>
-                BNXN</p>
-              <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-        <button class="carousel-btn left">&#10094;</button>
-        <button class="carousel-btn right">&#10095;</button>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search music..." />
+        <button id="searchBtn"><i class="fa fa-search"></i></button>
       </div>
 
-        <!-- Second Carousel with Rounded Images -->
-        <div class="carousel-container rounded-carousel">
-          <div class="carousel-title">Popular Artists</div>
-          <div class="carousel">
-            <div class="carousel-track carouse1l-track">
-              <div class="carousel-card">
-                <img class="rounded" src="https://i.scdn.co/image/ab67616100005174dc3fcc7b3eb99a22b3180eea" alt="Project 1">
-                <p style="font-weight: bold;">REMA</p>
-              </div>
-              <div class="carousel-card">
-                <img class="rounded" src="https://i.scdn.co/image/ab67616100005174cd47c329da04b3f18ddabe0e" alt="Project 1">
-                <p style="font-weight: bold;">SHALLIPOPI</p>
-              </div>
-              <div class="carousel-card">
-                <img class="rounded" src="https://i.scdn.co/image/ab67616100005174e6ef803356b45ee5a9fa7a8a" alt="Project 1">
-                <p style="font-weight: bold;">WIZKID</p>
-              </div>
-              <div class="carousel-card">
-                <img class="rounded" src="https://i.scdn.co/image/ab676161000051742d405f4858ce3cd52d409c98" alt="Project 1">
-                <p style="font-weight: bold;">BURNA BOY</p>
-              </div>
-              
-              <div class="carousel-card">
-                <img class="rounded" src="https://i.scdn.co/image/ab67616100005174a3ae97af098bf3aeeb24d338" alt="Project 1">
-                <p style="font-weight: bold;">ASAKE</p>
-              </div>
-              
-            </div>
-          </div>
-         
-        </div>
-
-        <div class="carousel-container album">
-          <div class="carousel-title">Popular Albums And Singles</div>
-          <div class="carousel">
-            <div class="carousel-track carouse1l-track">
-              <div class="carousel-card space">
-                <img class="rounded" src="https://i.scdn.co/image/ab67616d00001e025e9b08109120e18c41a7b3e2" alt="Project 1">
-                <div class="card-footer">
-                  <p>Morayo <br>
-                  WIZKID</p>
-                <button class="play-btn">&#9658;</button>
-                </div>
-              </div>
-              <div class="carousel-card">
-                <img src="https://i.scdn.co/image/ab67616d00001e02031b368082f16c71881b2b20" alt="Project 2">
-                <div class="card-footer">
-                  <p>Gen Z <br>
-                    ZINOLEESKY
-                  </p>
-                <button class="play-btn">&#9658;</button>
-                </div>
-              </div>
-              <div class="carousel-card">
-                <img src="https://i.scdn.co/image/ab67616d00001e027c45c1c29c18a5e0b46fc117" alt="Project 1">
-                <div class="card-footer">
-                  <p>Lungu Boy <br>
-                  ASAKE</p>
-                <button class="play-btn">&#9658;</button>
-                </div>
-              </div>
-              <div class="carousel-card">
-                <img src="https://i.scdn.co/image/ab67616d00001e02206085a51b33b6ce28caef77" alt="Project 2">
-                <div class="card-footer">
-                  <p>5ive <br>
-                    DAVIDO
-                  </p>
-                <button class="play-btn">&#9658;</button>
-                </div>
-              </div>
-              <div class="carousel-card">
-                <img src="https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16" alt="Project 1"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">
-                <div class="card-footer">
-                  <p>Cutesy <br>
-                  BNXN</p>
-                <button class="play-btn"  onclick="loadContent('https://i.scdn.co/image/ab67616d00001e02803c2040be48a7351ff50f16', 'BNXN_Buju_-_Cutesy_Tunesloaded.com.ng.mp3')">&#9658;</button>
-                </div>
-              </div>
-       
-            </div>
-          </div>
-          
-        </div>
-  
-
-        <section class="footer">
-          <div class="footer-content">
-            <!-- Title Lists -->
-            <div class="footer-lists">
-              <div class="footer-list">
-                <h3>Company</h3>
-                <ul>
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Careers</a></li>
-                  <li><a href="#">Press</a></li>
-                  <li><a href="#">Blog</a></li>
-                </ul>
-              </div>
-              <div class="footer-list">
-                <h3>Support</h3>
-                <ul>
-                  <li><a href="#">Help Center</a></li>
-                  <li><a href="#">Contact</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Terms of Service</a></li>
-                </ul>
-              </div>
-              <div class="footer-list">
-                <h3>Services</h3>
-                <ul>
-                  <li><a href="#">Web Development</a></li>
-                  <li><a href="#">App Development</a></li>
-                  <li><a href="#">SEO Optimization</a></li>
-                  <li><a href="#">Digital Marketing</a></li>
-                </ul>
-              </div>
-              <div class="footer-list">
-                <h3>Resources</h3>
-                <ul>
-                  <li><a href="#">Documentation</a></li>
-                  <li><a href="#">API Reference</a></li>
-                  <li><a href="#">Community</a></li>
-                  <li><a href="#">Tutorials</a></li>
-                </ul>
-              </div>
-            </div>
-        
-            <!-- Social Media Icons -->
-            <div class="footer-icons">
-              <a href="#" class="icon-facebook"><i class="fa-brands fa-facebook"></i></a>
-              <a href="#" class="icon-twitter"><i class="fa-brands fa-twitter"></i></a>
-              <a href="#" class="icon-instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
-        </section>
-        
+      <div class="nav-right">
+        <button class="library-btn" onclick="scrollToLibrary()">Library</button>
+        <button id="logout-button">Logout</button>
       </div>
-    
+    </nav>
 
-    
-    <div class="hero-right">
-      
-        <div class="navbar2">
-          <span class="navbar2-title">Your Library</span>
-          <button class="add-btn">+</button>
-        </div>
-        
-        <div class="card">
-          <h3>Create Playlist</h3>
-          <p>It's easy, we'll help.</p>
-          <button class="card-btn">Create Playlist</button>
-        </div>
-    
-        <!-- Second Card -->
-        <div class="card">
-          <h3>Follow Podcasts</h3>
-          <p>We'll keep you updated on new episodes.</p>
-          <button class="card-btn">Browse Podcasts</button>
-        </div>
-        <div class="small-footer">
-          <div class="footer-item">Legal</div>
-          <div class="footer-item">Cookies</div>
-          <div class="footer-item">About Ads</div>
-          <div class="footer-item">Privacy Policy</div>
-          <div class="footer-item">Accessibility</div>
-          <div class="footer-item">Safety & Privacy Center</div>
-        </div>
+    <section class="hero">
+      <div class="hero-left" id="mainContent"></div>
+      <div class="hero-right" id="librarySection">
+        <h3 style="color: #4ade80">Your Library</h3>
+      </div>
+    </section>
+
+    <div class="spinner" id="spinner">
+      <div></div>
     </div>
-  </section>
 
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
 
- <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
- <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
- <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
-  
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBEkbpXaQGAGEdnbdOkfseKkw0DnXBFyWc",
+        authDomain: "sonadev-35c29.firebaseapp.com",
+        projectId: "sonadev-35c29",
+        storageBucket: "sonadev-35c29.appspot.com",
+        messagingSenderId: "896577604099",
+        appId: "1:896577604099:web:09179fc434949e8edddc36",
+      };
 
-  <script>
-  const firebaseConfig = {
-            apiKey: "AIzaSyBEkbpXaQGAGEdnbdOkfseKkw0DnXBFyWc",
-            authDomain: "sonadev-35c29.firebaseapp.com",
-            projectId: "sonadev-35c29",
-            storageBucket: "sonadev-35c29.appspot.com",
-            messagingSenderId: "896577604099",
-            appId: "1:896577604099:web:09179fc434949e8edddc36",
-            measurementId: "G-1RNR95MR71"
-        };
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+      const API = "https://striveschool-api.herokuapp.com/api/deezer/";
 
-        // Initialize Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
+      const spinner = document.getElementById("spinner");
 
-        const profileImageElement = document.getElementById('profile-image');
-        const usernameSpan = document.getElementById('username');
-        const emailSpan = document.getElementById('email');
-        const logoutButton = document.getElementById('logout-button');
+      function showSpinner() {
+        spinner.style.display = "block";
+      }
+      function hideSpinner() {
+        spinner.style.display = "none";
+      }
 
-        // Function to get UID from URL query parameter
-        function getUidFromUrl() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('uid');
+      auth.onAuthStateChanged((user) => {
+        if (!user) {
+          window.location.replace("index.html");
+          return;
         }
+        loadHome();
+        loadPlaylist();
+      });
 
-    document.getElementById('hamburger-btn').addEventListener('click', () => {
-  // Placeholder for dropdown functionality
-  alert('Hamburger menu clicked!');
-});
+      document.getElementById("logout-button").onclick = () => {
+        auth.signOut().then(() => window.location.replace("index.html"));
+      };
 
-const carousel = document.querySelector('.carousel');
-const btnLeft = document.querySelector('.carousel-btn.left');
-const btnRight = document.querySelector('.carousel-btn.right');
+      function goHome() {
+        loadHome();
+      }
 
-const scrollStep = 320; 
+      function scrollToLibrary() {
+        document
+          .getElementById("librarySection")
+          .scrollIntoView({ behavior: "smooth" });
+      }
 
-btnRight.addEventListener('click', () => {
-  carousel.scrollBy({ left: scrollStep, behavior: 'smooth' });
-});
+      function showToast(message) {
+        const toast = document.getElementById("toast");
+        toast.textContent = message;
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 2000);
+      }
 
-btnLeft.addEventListener('click', () => {
-  carousel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
-});
+      async function loadHome() {
+        showSpinner();
+        const artists = ["wizkid", "davido", "asake", "burna boy", "rema"];
+        const container = document.getElementById("mainContent");
+        container.innerHTML = "";
+        let songs = [];
+        for (let a of artists) {
+          const r = await fetch(API + "search?q=" + a);
+          const d = await r.json();
+          songs.push(...d.data.slice(0, 5));
+        }
+        renderSection("Popular Afrobeat", songs, container);
+        hideSpinner();
+      }
 
- // Logout button functionality
- logoutButton.addEventListener('click', () => {
-            auth.signOut().then(() => {
-                // Sign-out successful.
-                console.log("User signed out.");
-                // Redirect to the login/signup page
-                window.location.href = 'index.html';
-            }).catch((error) => {
-                // An error happened.
-                console.error("Logout error:", error);
-                // Optionally display an error message to the user
-            });
+      document.getElementById("searchBtn").onclick = searchMusic;
+      document
+        .getElementById("searchInput")
+        .addEventListener("keydown", (e) => {
+          if (e.key === "Enter") searchMusic();
         });
 
+      async function searchMusic() {
+        const q = document.getElementById("searchInput").value.trim();
+        if (!q) return;
+        showSpinner();
+        const r = await fetch(API + "search?q=" + q);
+        const d = await r.json();
+        const container = document.getElementById("mainContent");
+        container.innerHTML = "";
+        renderSection("Search Results", d.data.slice(0, 15), container);
+        hideSpinner();
+      }
 
-        function loadContent(imageUrl, audioUrl) {
-            // Store the selected content in localStorage
-            localStorage.setItem('selectedImage', imageUrl);
-            localStorage.setItem('selectedAudio', audioUrl);
-            
-            // Redirect to the player page
-            window.location.href = 'test3.html';
-        }
+      function renderSection(title, items, container) {
+        const h = document.createElement("h2");
+        h.className = "section-title";
+        h.textContent = title;
+        container.appendChild(h);
 
-    
-  </script>
-</body>
+        const grid = document.createElement("div");
+        grid.className = "grid-row";
+
+        items.forEach((item) => {
+          const card = document.createElement("div");
+          card.className = "music-card";
+          card.innerHTML = `
+      <button class="save-btn">+</button>
+      <img src="${item.album.cover_medium}">
+      <p>${item.title}<br>${item.artist.name}</p>
+    `;
+          card.querySelector(".save-btn").onclick = (e) => {
+            e.stopPropagation();
+            saveToPlaylist(item);
+          };
+          card.onclick = () =>
+            loadContent(
+              item.album.cover_big,
+              item.preview,
+              item.title,
+              item.artist.name,
+            );
+          grid.appendChild(card);
+        });
+
+        container.appendChild(grid);
+      }
+
+      async function saveToPlaylist(track) {
+        const user = auth.currentUser;
+        await db
+          .collection("users")
+          .doc(user.uid)
+          .collection("playlist")
+          .doc(track.id.toString())
+          .set({
+            trackName: track.title,
+            artist: track.artist.name,
+            cover: track.album.cover_big,
+            preview: track.preview,
+            savedAt: firebase.firestore.FieldValue.serverTimestamp(),
+          });
+
+        showToast("Added to Library");
+        loadPlaylist();
+      }
+
+      async function loadPlaylist() {
+        const user = auth.currentUser;
+        const snap = await db
+          .collection("users")
+          .doc(user.uid)
+          .collection("playlist")
+          .orderBy("savedAt", "desc")
+          .get();
+
+        const lib = document.getElementById("librarySection");
+        lib.innerHTML = "<h3 style='color:#4ade80;'>Your Library</h3>";
+
+        const grid = document.createElement("div");
+        grid.className = "grid-row";
+
+        snap.forEach((doc) => {
+          const d = doc.data();
+          const card = document.createElement("div");
+          card.className = "music-card";
+          card.innerHTML = `
+      <button class="save-btn">X</button>
+      <img src="${d.cover}">
+      <p>${d.trackName}<br>${d.artist}</p>
+    `;
+          card.onclick = () => loadContent(d.cover, d.preview);
+          card.querySelector(".save-btn").onclick = (e) => {
+            e.stopPropagation();
+            doc.ref.delete();
+            loadPlaylist();
+          };
+          grid.appendChild(card);
+        });
+
+        lib.appendChild(grid);
+      }
+
+      function loadContent(img, audio, title, artist) {
+        const currentTrack = {
+          image: img,
+          audio: audio,
+          title: title,
+          artist: artist,
+        };
+
+        localStorage.setItem("selectedTrack", JSON.stringify(currentTrack));
+
+        localStorage.setItem("trackQueue", JSON.stringify([currentTrack]));
+
+        window.location = "test3.html";
+      }
+    </script>
+  </body>
 </html>
